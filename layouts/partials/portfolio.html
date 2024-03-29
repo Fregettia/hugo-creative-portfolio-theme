@@ -5,20 +5,15 @@
           {{ range .Data.Pages }}
               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 masonry-item">
                   <div class="box-masonry">
-                      {{ if and (isset .Params "image") .Params.image }}
-                        {{ if eq .Params.showonlyimage true }}
-                        <a href="{{ .Permalink }}" title="" class="box-masonry-image with-hover-overlay">
-                        {{ else }}
-                        <a href="{{ .Permalink }}" title="" class="box-masonry-image with-hover-overlay with-hover-icon">
+                    {{ if isset .Params "image" }}
+                    <div class="box-masonry-image with-hover-overlay">
+                        <img src="{{ .Params.image | absURL }}" alt="" class="img-responsive">
+                        {{ if isset .Params "video" }}
+                            <video class="video-responsive" src="{{ .Params.video | absURL }}" loop muted></video>
                         {{ end }}
-                            <img src="{{.Params.image | absURL}}" alt="" class="img-responsive">
-                        </a>
-                      {{ end }}
-                      {{ if eq .Params.showonlyimage true }}
-                      <div class="box-masonry-hover-text-header">
-                      {{ else }}
+                    </div>
+                    {{ end }}
                       <div class="box-masonry-text">
-                      {{ end }}
                           <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
                           <div class="box-masonry-description">
                             <p>

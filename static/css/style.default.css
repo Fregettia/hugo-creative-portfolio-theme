@@ -902,16 +902,49 @@ a:active {
 .box-masonry:hover .box-masonry-hover-center {
   opacity: 1;
 }
-.box-masonry:hover .box-masonry-image.with-hover-overlay:before {
-  opacity: 0.8;
+/* .box-masonry:hover .box-masonry-image.with-hover-overlay:before {
+  opacity: 0.5;
 }
 .box-masonry:hover .box-masonry-image.with-hover-icon:after {
-  opacity: 0.7;
-}
+  opacity: 0.5;
+} */
 .box-masonry h2:last-child,
 .box-masonry p:last-child {
   margin-bottom: 0;
 }
+
+.box-masonry img, .box-masonry video {
+  width: 100%; /* 确保图片和视频宽度相同 */
+  transition: opacity 1s ease; /* 渐变效果，持续1秒 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0; /* 默认状态不可见 */
+  z-index: 1; /* 确保视频和图片在同一层级 */
+}
+
+.box-masonry video {
+  z-index: 2; /* 当视频需要显示时，确保它在图片之上 */
+}
+
+.box-masonry .box-masonry-image img{
+  width: 100%;
+  opacity: 1;
+  height: auto;
+  position: relative;
+  background: #ccc;
+}
+
+/* 鼠标悬停在.box-masonry-image上时，视频渐显，图片渐隐 */
+.box-masonry .box-masonry-image:hover video {
+  opacity: 1; /* 视频可见 */
+}
+
+.box-masonry .box-masonry-image:hover img {
+  opacity: 0; /* 图片不可见 */
+}
+
+
 .box-masonry .box-masonry-image {
   display: block;
   position: relative;

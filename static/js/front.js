@@ -163,3 +163,14 @@ $(window).resize(function () {
         windowWidth = newWindowWidth;
     }
 });
+
+$(document).ready(function() {
+    $('.box-masonry').hover(
+        function() { // 鼠标进入事件
+            $('video', this).get(0).play();
+        },
+        function() { // 鼠标离开事件
+            $('video', this).get(0).pause();
+        }
+    );
+});
