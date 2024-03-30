@@ -4,9 +4,18 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
+        
          <h1>{{ .Title }}</h1>
          {{ .Content }}
          {{ template "_internal/disqus.html" . }}
+         
+         <canvas id="canvas3d"></canvas>
+         <script type="module">
+           import { Application } from '/js/runtime.js';
+           const canvas = document.getElementById('canvas3d');
+           const app = new Application(canvas);
+           app.load('{{ .Params.model_path | absURL }}');
+         </script>
       </div>
     </div>
   </div>
